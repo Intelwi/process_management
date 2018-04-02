@@ -16,3 +16,4 @@ b = zero(sysd) % zera transmitancji dyskretnej
 A1=A.'
 B1 = C.'
 C1 = B.'
+
