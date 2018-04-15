@@ -21,7 +21,7 @@ Ts = 0.25; % czas próbkowania
 
 sysd = c2d(sys,Ts,'zoh') % transmitancja dyskretna, otrzymana przez ektrapolator zerowego rzędu
 
-a =pole(sysd) % bieguny transmitancji dyskretnej
+a = pole(sysd) % bieguny transmitancji dyskretnej
 b = zero(sysd) % zera transmitancji dyskretnej
 
 [num,den] = tfdata(sysd)
@@ -32,3 +32,19 @@ b = zero(sysd) % zera transmitancji dyskretnej
 A3=A2.'
 B3 = C2.'
 C3 = B2.'
+
+% Zad no 3 ,otrzymanie transmitancji z obu przestrzeni stanów
+
+[b,a] = ss2tf(A2,B2,C2,D2) % przestrzeń stanów dla pierwszej metody
+[b1,a1] = ss2tf(A3,B3,C3,D2) % przestrzń stanów dla drugiej metody
+
+% Zad no 5
+
+Co = ctrb(A3,B3) % macierz sterownosci
+Ob = obsv(A3,C3) % macierz obserwowalności
+
+d_co = det(Co) % funkcja matlab
+d_ob = det(Ob) % funkcja matlab
+
+obserwacja = det([C3' (C3*A3)' (C3*A3^2)']) % ręcznie
+sterownosc = det([B3 A3*B3 (A3^2)*B3]') % ręcznie
