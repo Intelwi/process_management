@@ -35,8 +35,8 @@ C3 = B2.'
 
 % Zad no 3 ,otrzymanie transmitancji z obu przestrzeni stanów
 
-[b,a] = ss2tf(A2,B2,C2,D2) % przestrzeń stanów dla pierwszej metody
-[b1,a1] = ss2tf(A3,B3,C3,D2) % przestrzń stanów dla drugiej metody
+[b1,a1] = ss2tf(A2,B2,C2,D2) % przestrzeń stanów dla pierwszej metody
+[b2,a2] = ss2tf(A3,B3,C3,D2) % przestrzń stanów dla drugiej metody
 
 % Zad no 5
 
@@ -48,3 +48,6 @@ d_ob = det(Ob) % funkcja matlab
 
 obserwacja = det([C3' (C3*A3)' (C3*A3^2)']) % ręcznie
 sterownosc = det([B3 A3*B3 (A3^2)*B3]') % ręcznie
+
+% Zad no 6
+K = place(A3,B3,[0.09 0.08 0.06]) % nie da sie użyć trzeba ręcznie :-(
