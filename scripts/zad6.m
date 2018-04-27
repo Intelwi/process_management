@@ -1,6 +1,5 @@
-
 %Michał Stolarz
-%Zad nr 1
+%Zad nr 6
 
 % Ciągłe ----------------------------------------
 
@@ -8,17 +7,11 @@ Numerator = [0 1 9 8];
 Denominator = [1 12 -79 -990];
 sys = tf(Numerator,Denominator) % transmitancja ciągła
 
-[A,B,C,D] = tf2ss(Numerator,Denominator) %1 wariant metody bezpośredniej
-
-% współczynniki dla 2 wariantu metody bezpośredniej
-A1=A.'
-B1 = C.'
-C1 = B.'
-
 % Dyskretne --------------------------------------
 
 Ts = 0.25; % czas próbkowania
-
+Tp= 0.25;
+Ini = 0;
 sysd = c2d(sys,Ts,'zoh') % transmitancja dyskretna, otrzymana przez ektrapolator zerowego rzędu
 
 a = pole(sysd) % bieguny transmitancji dyskretnej
@@ -33,22 +26,18 @@ A3=A2.'
 B3 = C2.'
 C3 = B2.'
 
-% Zad no 3 ,otrzymanie transmitancji z obu przestrzeni stanów
 
-[b1,a1] = ss2tf(A2,B2,C2,D2) % przestrzeń stanów dla pierwszej metody
 [b2,a2] = ss2tf(A3,B3,C3,D2) % przestrzń stanów dla drugiej metody
 
-% Zad no 5
+% Regulator
+a=0.5%0.3
+b=0.6%0.2
+z1 = a + b*j
+z2 = a - b*j
 
-Co = ctrb(A3,B3) % macierz sterownosci
-Ob = obsv(A3,C3) % macierz obserwowalności
+k=0.3
+K = acker(A3,B3,[k z1 z2])
 
-d_co = det(Co) % funkcja matlab
-d_ob = det(Ob) % funkcja matlab
+[K,S,e] = LQR(A,B,Q,R,N)
 
-obserwacja = det([C3' (C3*A3)' (C3*A3^2)']) % ręcznie
-sterownosc = det([B3 A3*B3 (A3^2)*B3]') % ręcznie
-
-% Zad no 6
-K = place(A3,B3,[0.09 0.08 0.06]) % nie da sie użyć trzeba ręcznie :-(
 
