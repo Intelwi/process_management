@@ -38,7 +38,9 @@ z2 = a - b*j
 k=0.3
 K = acker(A3,B3,[47.3787  -10.9824 -148.0853])
 
-%najlepszy regulator
-Q=eye(3)
-R=1
-[K,S,e] = lqr(A3,B3,Q,R)
+%obserwator
+l1=0.2
+
+A3_22 = A3(2:3,2:3)
+A3_12 = A3(1,2:3)
+L = acker(A3_22',A3_12',[l1 l1])% obliczenie parametrów obserwatora
