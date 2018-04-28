@@ -35,8 +35,8 @@ b=0.6%0.2
 z1 = a + b*j
 z2 = a - b*j
 
-k=0.3
-K = acker(A3,B3,[47.3787  -10.9824 -148.0853])
+k=0.2
+K = acker(A3,B3,[k k k])
 
 %obserwator
 l1=0.2
@@ -47,3 +47,4 @@ A3_12 = A3(1,2:3)
 B3_1 = B3(1)
 B3_2 = B3(2:3)
 L = acker(A3_22',A3_12',[l1 l1])% obliczenie parametrów obserwatora
+L=L'

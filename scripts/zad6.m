@@ -30,14 +30,19 @@ C3 = B2.'
 [b2,a2] = ss2tf(A3,B3,C3,D2) % przestrzń stanów dla drugiej metody
 
 % Regulator
-a=0.5%0.3
-b=0.6%0.2
+%a=0.5%0.3
+%b=0.6%0.2
+
+a=0.3
+b=0.1
+
 z1 = a + b*j
 z2 = a - b*j
 
 k=0.3
+%K = acker(A3,B3,[k k k])
 K = acker(A3,B3,[k z1 z2])
 
-[K,S,e] = LQR(A,B,Q,R,N)
+%[K,S,e] = LQR(A,B,Q,R,N)
 
 
