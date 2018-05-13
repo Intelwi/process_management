@@ -10,8 +10,10 @@ T_2 = 5.27
 s = tf('s')
 sys = K_0* exp(-T_0*s)/((s*T_1+1)*(s*T_2+1)) % transmitancja
 
+opt = stepDataOptions('InputOffset',0,'StepAmplitude',1); % ustawienia skoku
+
 subplot(2,1,1)
-step(sys,35) % odpowiedź skokowa
+step(sys,35,opt) % odpowiedź skokowa
 
 K_c = dcgain(sys) % wzmocnienie statyczne
 
@@ -23,7 +25,7 @@ Tp = 0.5; % czas próbkowania
 sysd = c2d(sys,Tp,'zoh') % transmitancja dyskretna, otrzymana przez ektrapolator zerowego rzędu
 
 subplot(2,1,2)
-step(sysd,35) % odpowiedź skokowa
+step(sysd,35,opt) % odpowiedź skokowa
 
 K_d = dcgain(sysd) % wzmocnienie statyczne
 
