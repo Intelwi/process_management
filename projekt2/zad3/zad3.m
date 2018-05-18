@@ -1,3 +1,6 @@
+%Michał Stolarz
+%Zad nr 3
+
 K_0 = 4.7
 T_0 = 5
 T_1 = 1.89
@@ -28,4 +31,9 @@ step(T,50,opt) % skok
 hold off
 
 %dyskretny regulator
+Tp=0.5
+
+r0 = Kp*(1+(Tp/(2*Ti))+(Td/Tp))
+r1 = Kp*(-1-2*(Td/Tp)+Tp/(2*Ti))
+r2 = (Kp*Td)/Tp
 
