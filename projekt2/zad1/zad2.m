@@ -14,11 +14,11 @@ Tk = 20
 
 %################################################
 Kp=0.6*Kk*0.4
-Ki=1/(0.5*Tk*6)
-Kd=0.12*Tk*0.05
+Ti=(0.5*Tk*0.7)
+Td=0.12*Tk*0.5
 %################################################
-
-Pid = pid(Kp,Ki,Kd) % regulator
+Pid = Kp*(1+(1/(Ti*s)) +Td*s)
+%Pid = pid(Kp,Ki,Kd) % regulator
 
 T = feedback(Pid*sys,1) % sprzężenie zwrotne
 opt = stepDataOptions('InputOffset',0,'StepAmplitude',1); % ustawienia skoku
@@ -26,3 +26,6 @@ figure
 hold on
 step(T,50,opt) % skok
 hold off
+
+%dyskretny regulator
+
