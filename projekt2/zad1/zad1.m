@@ -28,4 +28,3 @@ subplot(2,1,2)
 step(sysd,35,opt) % odpowiedź skokowa
 
 K_d = dcgain(sysd) % wzmocnienie statyczne
-
