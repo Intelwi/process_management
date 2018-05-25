@@ -84,7 +84,13 @@ end
 figure
 hold on
 stairs(y_model);
-stairs(y_zad) 
+stairs(y_za deltaupk(1)=delta_uk; %bierzemy tylko pierwszy element sterowania
+   uk(k)=uk(k-1)+delta_uk;   
+   wejscie_u(k)=uk(k);
+   wyjscie_y(k)=ymod(k);
+   
+   Jy=Jy+(yzad(k)-ymod(k))^2;
+   Ju=Ju+(uk(k)-uk(k-1))^2;sd) 
 title("DMC y");
 xlabel("k");
 hold off
