@@ -8,7 +8,7 @@ T_2 = 5.27
 
 % Ciągłe ----------------------------------------
 s = tf('s')
-sys = K_0* exp(-T_0*s)/((s*T_1+1)*(s*T_2+1)) % transmitancja
+sys = (4.7*exp(-5*s))/((s*1.89+1)*(s*5.27+1)) % transmitancja
 
 opt = stepDataOptions('InputOffset',0,'StepAmplitude',1); % ustawienia skoku
 

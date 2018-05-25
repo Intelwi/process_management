@@ -31,8 +31,10 @@ hold off
 s = y;
 
 % Horyzonty
-D=80
-
+D=
+%D= %horyzont dynamiki równy 134 jest ok
+%N=134; %dla 40 jest ok
+%Nu=134; %dla 15 jest ok
 N=D
 Nu=D
 % Współczynnik kary za przyrosty sterowania

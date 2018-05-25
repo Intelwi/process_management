@@ -57,9 +57,8 @@ end;
 
 %wyniki symulacji
 figure;
-hold on;
 stairs(x,u); 
-title("PID u");
+title("PID");
 xlabel("k");
 hold off
 
@@ -68,7 +67,7 @@ hold on
 stairs(x,y)
 hold on
 stairs(x,yzad) 
-title("PID yzad, y")
+title("PIDyzad, y")
 xlabel("k") 
 hold off
 
