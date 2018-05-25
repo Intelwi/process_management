@@ -1,6 +1,9 @@
+%Michał Stolarz
+%Zad nr 5
+
 %##########Odpowiedź skokowa obiektu###############
 
-kk=400; %koniec symulacji 
+kk=400 %koniec symulacji 
 
 x=1:kk
 y=zeros(kk,1);
@@ -17,29 +20,19 @@ for k=13:kk; %główna petla symulacyjna
      y(k)=1.677*y(k-1)-0.6981*y(k-2)+0.0524*u(k-11)+0.04649*u(k-12); 
 end; 
 
-%wyniki symulacji
-figure;
-stairs(x,y); 
-title("y");
-xlabel("k");
-hold off
-
-
 
 % Wektor z rzędnymi odpowiedzi skokowych obiektu
 
 s = y;
 
 % Horyzonty
-D=
-%D= %horyzont dynamiki równy 134 jest ok
-%N=134; %dla 40 jest ok
-%Nu=134; %dla 15 jest ok
-N=D
-Nu=D
+D=80
+
+N=18
+Nu=1
 % Współczynnik kary za przyrosty sterowania
 
-lambda=1; %dla 1000 jest ok
+lambda=400; %dla 400 jest ok
 
 % Generacja macierzy
 
@@ -72,7 +65,7 @@ y_zad = ones(kk,1);
 y_model = zeros(kk,1);
 d_u=zeros(N,1);
 d_u_stare = zeros(D,1);
-u = zeros(Nu,1);
+u = zeros(kk,1);
 
 for k=13:kk; %główna petla symulacyjna 
    
@@ -92,7 +85,14 @@ figure
 hold on
 stairs(y_model);
 stairs(y_zad) 
-title("DMC");
+title("DMC y");
 xlabel("k");
 hold off
 
+%wyniki symulacji
+figure
+hold on
+stairs(u);
+title("DMC u");
+xlabel("k");
+hold off
