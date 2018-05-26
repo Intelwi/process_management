@@ -27,7 +27,7 @@ T = feedback(Pid*sys,1) % sprzężenie zwrotne
 opt = stepDataOptions('InputOffset',0,'StepAmplitude',1); % ustawienia skoku
 figure
 hold on
-step(T,50,opt) % skok
+step(T,70,opt) % skok
 hold off
 
 %dyskretny regulator

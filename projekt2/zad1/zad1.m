@@ -30,7 +30,7 @@ sysd = c2d(sys,Tp,'zoh') % transmitancja dyskretna, otrzymana przez ektrapolator
 subplot(2,1,2)
 step(sysd,50,opt) % odpowiedź skokowa
 title("Odpowiedź skokowa G(z)");
-xlabel("Czas[s]");
+xlabel("Czas");
 ylabel("Amplituda")
 
 

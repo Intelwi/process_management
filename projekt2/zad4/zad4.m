@@ -9,9 +9,9 @@ Kp=0.6*Kk
 Ti=(0.5*Tk)
 Td=0.12*Tk
 
-Kp=Kp*0.4
-Ti=Ti*0.7
-Td=Td*0.5
+%Kp=Kp*0.4
+%Ti=Ti*0.7
+%Td=Td*0.5
 
 %dyskretny regulator
 Tp=0.5
@@ -46,7 +46,7 @@ yzad(1:12)=1;
 yzad(13:kk)=1; 
 e(1:12)=0; 
 
-for k=13:kk; %główna ptla symulacyjna 
+for k=13:kk; %główna petla symulacyjna 
 %symulacja obiektu 
      y(k)=1.677*y(k-1)-0.6981*y(k-2)+0.0524*u(k-11)+0.04649*u(k-12);
 %uchyb regulacji 
@@ -55,20 +55,23 @@ for k=13:kk; %główna ptla symulacyjna
      u(k)=r2*e(k-2)+r1*e(k-1)+r0*e(k)+u(k-1); 
 end; 
 
-%wyniki symulacji
+%sterowanie
 figure;
 hold on;
 stairs(x,u); 
-title("PID u");
+title("u");
+ylabel("Amplitude");
 xlabel("k");
 hold off
 
+%odpowiedź skokowa
 figure; 
 hold on
 stairs(x,y)
 hold on
 stairs(x,yzad) 
-title("PID yzad, y")
+title("y, y_{zad}")
+ylabel("Amplitude");
 xlabel("k") 
 hold off
 
@@ -83,8 +86,8 @@ x=1:kk
 y=zeros(kk,1);
 u=zeros(kk,1);
 
-%warunki pocztkowe 
-u(1:12)=0; 
+%warunki początkowe 
+u(1:12)=1; 
 y(1:12)=0; 
 u(1:12)=1; 
 u(13:kk)=1;  
@@ -98,6 +101,7 @@ end;
 figure;
 stairs(x,y); 
 title("y");
+ylabel("Amplitude")
 xlabel("k");
 hold off
 
@@ -158,7 +162,7 @@ u = zeros(Nu,1)
 
 for k=13:kk; %główna petla symulacyjna 
    
-   y_model(k)=1.677*y_model(k-1)-0.6981*y_model(k-2)+0.524*u(k-11)+0.04649*u(k-12); %odpowiedź modelu na sterowanie 
+   y_model(k)=1.677*y_model(k-1)-0.6981*y_model(k-2)+0.0524*u(k-11)+0.04649*u(k-12); %odpowiedź modelu na sterowanie 
   
    d_u = K*(y_zad(1)*ones(N,1)- y_model(k)*ones(N) -MP*d_u_stare(1:N-1)); %zmiana sterowania
    
@@ -170,12 +174,22 @@ for k=13:kk; %główna petla symulacyjna
    
 end; 
 
-%wyniki symulacji
+%sterowanie
+figure;
+hold on;
+stairs(u); 
+title("u");
+ylabel("Amplitude");
+xlabel("k");
+hold off
+
+%odpowiedź skokowa
 figure
 hold on
 stairs(y_model);
 stairs(y_zad) 
-title("DMC");
+title("y,y_{zad}");
+ylabel("Amplitude");
 xlabel("k");
 hold off
 

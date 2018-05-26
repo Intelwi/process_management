@@ -3,7 +3,7 @@
 
 %##########Odpowiedź skokowa obiektu###############
 
-kk=300 %koniec symulacji 
+kk=200 %koniec symulacji 
 
 x=1:kk
 y=zeros(kk,1);
@@ -24,6 +24,7 @@ end;
 figure;
 stairs(x,y); 
 title("y");
+ylabel("Amplitude");
 xlabel("k");
 hold off
 
@@ -93,7 +94,8 @@ figure
 hold on
 stairs(y_model);
 stairs(y_zad) 
-title("DMC");
+title("y, y_{zad}")
+ylabel("Amplitude");
 xlabel("k");
 hold off
 
