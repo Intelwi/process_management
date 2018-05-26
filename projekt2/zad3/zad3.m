@@ -16,9 +16,9 @@ Kk = 0.4802 % Kp=0.4802 <- wzmocnienie krytyczne Tk = 20 sek  <- okres oscylacji
 Tk = 20
 
 %################################################
-Kp=0.6*Kk*0.4
-Ti=(0.5*Tk*0.7)
-Td=0.12*Tk*0.5
+Kp=0.6*Kk%*0.4
+Ti=(0.5*Tk)%*0.7
+Td=0.12*Tk%*0.5
 %################################################
 Pid = Kp*(1+(1/(Ti*s)) +Td*s)
 %Pid = pid(Kp,Ki,Kd) % regulator

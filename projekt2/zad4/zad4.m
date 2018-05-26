@@ -9,7 +9,7 @@ Kp=0.6*Kk
 Ti=(0.5*Tk)
 Td=0.12*Tk
 
-Kp=Kp*0.4%inne nastawy bo tamte nie działają
+Kp=Kp*0.4
 Ti=Ti*0.7
 Td=Td*0.5
 

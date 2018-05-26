@@ -1,0 +1,14 @@
+Zad 1
+
+\begin{aligned} G(s)=\frac{K_{0} e^{-T_{0}s}}{(T_{1}s+1)(T_{2}s+1)}\end{aligned}
+
+\begin{aligned} G(z)=z^{-10}\frac{0.0524z+0.04649}{z^2 - 1.677z+0.6981}\end{aligned}
+
+%#################################################
+
+Zad 3
+
+\begin{aligned} 
+r_{0}=K_{r}\left(1+\frac{T_{p}}{2T_{i}}+\frac{T_{d}}{T_{p}}\right)\\r_{1}=K_{r}\left(-1-2 \frac{T_{d}}{T_{p}}+\frac{T_{p}}{2T_{i}}\right)\\r_{2} = \frac{K_{r}T_{d}}{T_{p}}\end{aligned}
+
+
