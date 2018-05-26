@@ -3,7 +3,7 @@
 
 %##########Odpowiedź skokowa obiektu###############
 
-kk=200 %koniec symulacji 
+kk=200%koniec symulacji 
 
 x=1:kk
 y=zeros(kk,1);
@@ -74,7 +74,7 @@ y_zad = ones(kk,1);
 y_model = zeros(kk,1);
 d_u=zeros(N,1);
 d_u_stare = zeros(D,1);
-u = zeros(Nu,1);
+u = zeros(kk,1);
 
 for k=13:kk; %główna petla symulacyjna 
    
@@ -89,7 +89,7 @@ for k=13:kk; %główna petla symulacyjna
    
 end
 
-%wyniki symulacji
+%wartość zadana
 figure
 hold on
 stairs(y_model);
@@ -99,3 +99,11 @@ ylabel("Amplitude");
 xlabel("k");
 hold off
 
+%sterowanie
+figure
+hold on
+stairs(u); 
+title("u")
+ylabel("Amplitude");
+xlabel("k");
+hold off
