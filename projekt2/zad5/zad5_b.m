@@ -28,7 +28,7 @@ s = y;
 % Horyzonty
 D=80
 
-N=40%sprawdzić 40, 20, 18, 16, 15, 14
+N=14%sprawdzić 40, 20, 18, 16, 15, 14
 Nu=N
 % Współczynnik kary za przyrosty sterowania
 
