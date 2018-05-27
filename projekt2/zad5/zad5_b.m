@@ -10,7 +10,7 @@ y=zeros(kk,1);
 u=zeros(kk,1);
 
 %warunki pocztkowe 
-u(1:12)=0; 
+u(1:12)=1; 
 y(1:12)=0; 
 u(1:12)=1; 
 u(13:kk)=1;  
@@ -28,7 +28,7 @@ s = y;
 % Horyzonty
 D=80
 
-N=14%sprawdzić 40, 20, 18, 16, 15, 14
+N=18%sprawdzić 40, 20, 18, 16, 15, 14
 Nu=N
 % Współczynnik kary za przyrosty sterowania
 

@@ -3,14 +3,14 @@
 
 %##########Odpowiedź skokowa obiektu###############
 
-kk=300 %koniec symulacji 
+kk=200 %koniec symulacji 
 
 x=1:kk
 y=zeros(kk,1);
 u=zeros(kk,1);
 
 %warunki pocztkowe 
-u(1:12)=0; 
+u(1:12)=1; 
 y(1:12)=0; 
 u(1:12)=1; 
 u(13:kk)=1;  
@@ -29,7 +29,7 @@ s = y;
 D=80
 
 N=18
-Nu=1
+Nu=10
 % Współczynnik kary za przyrosty sterowania
 
 lambda=1; 
@@ -80,19 +80,21 @@ for k=13:kk; %główna petla symulacyjna
    
 end
 
-%wyniki symulacji
+%wartość zadana
 figure
 hold on
 stairs(y_model);
 stairs(y_zad) 
-title("DMC y");
+title("y, y_{zad}")
+ylabel("Amplitude");
 xlabel("k");
 hold off
 
-%wyniki symulacji
+%sterowanie
 figure
 hold on
-stairs(u);
-title("DMC u");
+stairs(u); 
+title("u")
+ylabel("Amplitude");
 xlabel("k");
 hold off

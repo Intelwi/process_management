@@ -10,7 +10,7 @@ y=zeros(kk,1);
 u=zeros(kk,1);
 
 %warunki pocztkowe 
-u(1:12)=0; 
+u(1:12)=1; 
 y(1:12)=0; 
 u(1:12)=1; 
 u(13:kk)=1;  
