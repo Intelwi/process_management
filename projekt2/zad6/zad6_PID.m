@@ -1,5 +1,6 @@
 %Michał Stolarz
 %Zad nr 6
+%Testy dla algorytmu PID
 
 
 %##############Obiekt####################
@@ -14,13 +15,12 @@ T_2 = 5.27
 % Ciągłe ----------------------------------------
 s = tf('s')
 sys = k*K_0* exp(-t*T_0*s)/((s*T_1+1)*(s*T_2+1)) % transmitancja ciągła
+%Dyskretne --------------------------------------
+Tp=0.5
 sysd = c2d(sys,Tp,'zoh') % transmitancja dyskretna
 
 [num,den] = tfdata(sysd,'v') % pobranie współczynników
 delay = get(sysd,'OutputDelay'); % pobranie opóźnienia
-
- %y(k)=(1/(den(1))) * ((-den(2))*y(k-1)+(-den(3))*y(k-2)+num(2)*u(k-(delay)-1)+num(3)*u(k-(delay)-2));
-
 
 %##############Regulator#################
 Kk = 0.4802 % Kp=0.4802 <- wzmocnienie krytyczne 
@@ -29,8 +29,6 @@ Tk = 20 % Tk = 20 sek  <- okres oscylacji
 Kp=0.6*Kk
 Ti=(0.5*Tk)
 Td=0.12*Tk
-
-Tp=0.5
 
 r0 = Kp*(1+(Tp/(2*Ti))+(Td/Tp))
 r1 = Kp*(-1-2*(Td/Tp)+Tp/(2*Ti))
