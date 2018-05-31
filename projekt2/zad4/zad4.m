@@ -114,13 +114,13 @@ s = y;
 
 % Horyzonty
 
-D=25;
-N=25;
-Nu=15;
+D=80;
+N=18;
+Nu=1;
 
 % Współczynnik kary za przyrosty sterowania
 
-lambda=1000;
+lambda=400;
 
 % Generacja macierzy
 
@@ -148,31 +148,25 @@ end;
 
 I=eye(Nu);
 K=((M'*M+lambda*I)^-1)*M';
-%ku=K(1,:)*MP;
-%ke=sum(K(1,:));
 
-%formatka = '%f,';
-%fprintf(formatka, ku)
-kk=400
-y_zad = ones(kk,1)
-y_model = zeros(kk,1)
-d_u=zeros(N,1)
-d_u_stare = zeros(N,1)
-u = zeros(Nu,1)
+y_zad = ones(kk,1);
+y_model = zeros(kk,1);
+d_u=zeros(N,1);
+d_u_stare = zeros(D,1);
+u = zeros(kk,1);
 
 for k=13:kk; %główna petla symulacyjna 
    
    y_model(k)=1.677*y_model(k-1)-0.6981*y_model(k-2)+0.0524*u(k-11)+0.04649*u(k-12); %odpowiedź modelu na sterowanie 
   
-   d_u = K*(y_zad(1)*ones(N,1)- y_model(k)*ones(N) -MP*d_u_stare(1:N-1)); %zmiana sterowania
+   d_u = K*(y_zad(1)*ones(N,1)- y_model(k)*ones(N,1) -MP*d_u_stare(1:D-1)); %zmiana sterowania
    
-   d_u_stare(2:end)=d_u_stare(1:end-1)%przesuniecie
+   d_u_stare(2:end)=d_u_stare(1:end-1);%przesuniecie
    d_u_stare(1) = d_u(1);
    
    u(k)=u(k-1)+d_u(1); %sterowanie
    
-   
-end; 
+end
 
 %sterowanie
 figure;
